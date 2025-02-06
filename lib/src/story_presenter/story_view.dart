@@ -431,6 +431,7 @@ class _FlutterStoryPresenterState extends State<FlutterStoryPresenter>
             currentItem.customWidget != null) ...{
           Positioned.fill(
             child: StoryCustomWidgetWrapper(
+              key: ValueKey('$currentIndex'),
               builder: (audioPlayer) {
                 return currentItem.customWidget!(
                         widget.flutterStoryController, audioPlayer) ??
