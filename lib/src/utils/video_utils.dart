@@ -1,25 +1,25 @@
 import 'dart:io';
-import 'package:flutter/foundation.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:video_player/video_player.dart';
+import 'package:cached_video_player_plus/cached_video_player_plus.dart';
+//import 'package:flutter/foundation.dart';
+//import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 class VideoUtils {
   VideoUtils._();
 
   // Cache manager to handle caching of video files.
-  final _cacheManager = DefaultCacheManager();
+  //final _cacheManager = DefaultCacheManager();
 
   // Singleton instance of VideoUtils.
   static final VideoUtils instance = VideoUtils._();
 
   // Method to create a VideoPlayerController from a URL.
   // If cacheFile is true, it attempts to cache the video file.
-  Future<VideoPlayerController> videoControllerFromUrl({
+  Future<CachedVideoPlayerPlusController> videoControllerFromUrl({
     required String url,
-    bool? cacheFile = false,
+    //bool? cacheFile = false,
     VideoPlayerOptions? videoPlayerOptions,
   }) async {
-    try {
+    /*try {
       File? cachedVideo;
       // If caching is enabled, try to get the cached file.
       if (cacheFile ?? false) {
@@ -27,38 +27,38 @@ class VideoUtils {
       }
       // If a cached video file is found, create a VideoPlayerController from it.
       if (cachedVideo != null) {
-        return VideoPlayerController.file(
+        return CachedVideoPlayerPlusController.file(
           cachedVideo,
           videoPlayerOptions: videoPlayerOptions,
         );
       }
     } catch (e) {
       debugPrint(e.toString());
-    }
+    }*/
     // If no cached file is found, create a VideoPlayerController from the network URL.
-    return VideoPlayerController.networkUrl(
+    return CachedVideoPlayerPlusController.networkUrl(
       Uri.parse(url),
       videoPlayerOptions: videoPlayerOptions,
     );
   }
 
   // Method to create a VideoPlayerController from a local file.
-  VideoPlayerController videoControllerFromFile({
+  CachedVideoPlayerPlusController videoControllerFromFile({
     required File file,
     VideoPlayerOptions? videoPlayerOptions,
   }) {
-    return VideoPlayerController.file(
+    return CachedVideoPlayerPlusController.file(
       file,
       videoPlayerOptions: videoPlayerOptions,
     );
   }
 
   // Method to create a VideoPlayerController from an asset file.
-  VideoPlayerController videoControllerFromAsset({
+  CachedVideoPlayerPlusController videoControllerFromAsset({
     required String assetPath,
     VideoPlayerOptions? videoPlayerOptions,
   }) {
-    return VideoPlayerController.asset(
+    return CachedVideoPlayerPlusController.asset(
       assetPath,
       videoPlayerOptions: videoPlayerOptions,
     );

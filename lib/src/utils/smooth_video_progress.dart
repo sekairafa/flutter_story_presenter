@@ -1,8 +1,8 @@
 library smooth_video_progress;
 
+import 'package:cached_video_player_plus/cached_video_player_plus.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:video_player/video_player.dart';
 
 /// A widget that provides a method of building widgets using an interpolated
 /// position value for [VideoPlayerController].
@@ -15,7 +15,7 @@ class SmoothVideoProgress extends HookWidget {
   });
 
   /// The [VideoPlayerController] to build a progress widget for.
-  final VideoPlayerController controller;
+  final CachedVideoPlayerPlusController controller;
 
   /// The builder function.
   ///

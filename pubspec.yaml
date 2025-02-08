@@ -2,6 +2,7 @@ name: flutter_story_presenter
 description: "Flutter package that shows videos, images, and text as a story like Instagram, Whatsapp and other social media platforms"
 version: 1.0.4
 homepage: https://github.com/devkrest/flutter_story_presenter
+publish_to: none
 
 environment:
   sdk: ">=2.18.0 <4.0.0"
@@ -14,9 +15,12 @@ dependencies:
   cached_network_image: ^3.3.1
   flutter_cache_manager: ^3.3.1
   flutter_hooks: ^0.20.5
-  video_player: ^2.9.1
   flutter_inappwebview: ^6.0.0
   just_audio: ^0.9.37
+  cached_video_player_plus:
+    git:
+      url: https://github.com/sekairafa/cached_video_player_plus.git
+    #path: ../cached_video_player_plus
 
 dev_dependencies:
   flutter_test:
@@ -28,6 +32,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  uses-material-design: true
 
 # To add assets to your package, add an assets section, like this:
 # assets:

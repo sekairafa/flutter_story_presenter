@@ -1,7 +1,7 @@
 import 'dart:io';
 
+import 'package:cached_video_player_plus/cached_video_player_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
 import '../models/story_item.dart';
 import '../story_presenter/story_view.dart';
 import '../utils/story_utils.dart';
@@ -28,7 +28,7 @@ class VideoStoryView extends StatefulWidget {
 }
 
 class _VideoStoryViewState extends State<VideoStoryView> {
-  VideoPlayerController? videoPlayerController;
+  CachedVideoPlayerPlusController? videoPlayerController;
   bool hasError = false;
 
   @override
@@ -46,7 +46,7 @@ class _VideoStoryViewState extends State<VideoStoryView> {
         videoPlayerController =
             await VideoUtils.instance.videoControllerFromUrl(
           url: storyItem.url!,
-          cacheFile: storyItem.videoConfig?.cacheVideo,
+          //cacheFile: storyItem.videoConfig?.cacheVideo,
           videoPlayerOptions: storyItem.videoConfig?.videoPlayerOptions,
         );
       } else if (storyItem.storyItemSource.isFile) {
@@ -103,7 +103,7 @@ class _VideoStoryViewState extends State<VideoStoryView> {
             // Display the video with aspect ratio if specified.
             AspectRatio(
               aspectRatio: videoPlayerController!.value.aspectRatio,
-              child: VideoPlayer(
+              child: CachedVideoPlayerPlus(
                 videoPlayerController!,
               ),
             )
@@ -117,7 +117,7 @@ class _VideoStoryViewState extends State<VideoStoryView> {
                     videoPlayerController!.value.size.width,
                 height: widget.storyItem.videoConfig?.height ??
                     videoPlayerController!.value.size.height,
-                child: VideoPlayer(videoPlayerController!),
+                child: CachedVideoPlayerPlus(videoPlayerController!),
               ),
             )
           },
