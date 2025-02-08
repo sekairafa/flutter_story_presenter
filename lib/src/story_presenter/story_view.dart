@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:cached_video_player_plus/cached_video_player_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_story_presenter/src/story_presenter/story_custom_view_wrapper.dart';
 import 'package:just_audio/just_audio.dart';
@@ -14,7 +15,6 @@ import '../story_presenter/web_story_view.dart';
 import '../story_presenter/text_story_view.dart';
 import '../utils/smooth_video_progress.dart';
 import '../utils/story_utils.dart';
-import 'package:video_player/video_player.dart';
 
 typedef OnStoryChanged = void Function(int);
 typedef OnCompleted = Future<void> Function();
@@ -22,7 +22,7 @@ typedef OnLeftTap = void Function();
 typedef OnRightTap = void Function();
 typedef OnDrag = void Function();
 typedef OnItemBuild = Widget? Function(int, Widget);
-typedef OnVideoLoad = void Function(VideoPlayerController?);
+typedef OnVideoLoad = void Function(CachedVideoPlayerPlusController?);
 typedef OnAudioLoaded = void Function(AudioPlayer);
 typedef CustomViewBuilder = Widget Function(AudioPlayer);
 typedef OnSlideDown = void Function(DragUpdateDetails);
@@ -104,7 +104,7 @@ class _FlutterStoryPresenterState extends State<FlutterStoryPresenter>
   int currentIndex = 0;
   bool isCurrentItemLoaded = false;
   double currentItemProgress = 0;
-  VideoPlayerController? _currentVideoPlayer;
+  CachedVideoPlayerPlusController? _currentVideoPlayer;
   double? storyViewHeight;
   AudioPlayer? _audioPlayer;
   Duration? _totalAudioDuration;

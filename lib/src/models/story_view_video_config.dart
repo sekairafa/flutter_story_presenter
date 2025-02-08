@@ -1,6 +1,6 @@
+import 'package:cached_video_player_plus/cached_video_player_plus.dart';
 import 'package:flutter/material.dart';
 import '../utils/story_utils.dart';
-import 'package:video_player/video_player.dart';
 
 class StoryViewVideoConfig {
   const StoryViewVideoConfig({
@@ -8,7 +8,7 @@ class StoryViewVideoConfig {
     this.height,
     this.width,
     this.loadingWidget,
-    this.cacheVideo = false,
+    //this.cacheVideo = false,
     this.useVideoAspectRatio = true,
     this.videoPlayerOptions,
   });
@@ -27,7 +27,7 @@ class StoryViewVideoConfig {
 
   /// If to cache Video for directly playing from file
   /// Applicable when [StoryItemSource] is [StoryItemSource.network]
-  final bool cacheVideo;
+  //final bool cacheVideo;
 
   /// Progress Indicator for building Video
   final Widget? loadingWidget;
