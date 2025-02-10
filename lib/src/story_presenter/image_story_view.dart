@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_story_presenter/flutter_story_presenter.dart';
+import 'package:flutter_story_presenter/src/utils/my_cache_manager.dart';
 import 'package:just_audio/just_audio.dart';
 
 typedef OnImageLoaded = void Function(bool);
@@ -164,6 +165,7 @@ class _ImageStoryViewState extends State<ImageStoryView> {
         return const SizedBox.shrink();
       },
       progressIndicatorBuilder: imageConfig?.progressIndicatorBuilder,
+      cacheManager: MyCacheManager(),
     );
   }
 }
