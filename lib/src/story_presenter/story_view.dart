@@ -40,6 +40,7 @@ class FlutterStoryPresenter extends StatefulWidget {
     this.initialIndex = 0,
     this.storyViewIndicatorConfig,
     this.restartOnCompleted = true,
+    this.canResume = true,
     this.onVideoLoad,
     this.headerWidget,
     this.footerWidget,
@@ -47,6 +48,8 @@ class FlutterStoryPresenter extends StatefulWidget {
     this.onSlideStart,
     super.key,
   }) : assert(initialIndex < items.length);
+
+  final bool canResume;
 
   /// List of StoryItem objects to display in the story view.
   final List<StoryItem> items;
@@ -135,7 +138,9 @@ class _FlutterStoryPresenterState extends State<FlutterStoryPresenter>
     log("STATE ==> $state");
     switch (state) {
       case AppLifecycleState.resumed:
-        _resumeMedia();
+        if (widget.canResume) {
+          _resumeMedia();
+        }
         break;
       case AppLifecycleState.inactive:
       case AppLifecycleState.paused:
