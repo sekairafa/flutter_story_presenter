@@ -43,7 +43,7 @@ class FlutterStoryPresenter extends StatefulWidget {
     this.autoPlay = true,
     this.canResume = true,
     this.canGoBack = false,
-    this.onFirstItemLoaded,
+    this.onItemLoaded,
     this.onVideoLoad,
     this.headerWidget,
     this.footerWidget,
@@ -55,7 +55,7 @@ class FlutterStoryPresenter extends StatefulWidget {
   final bool autoPlay;
   final bool canResume;
   final bool canGoBack;
-  final VoidCallback? onFirstItemLoaded;
+  final void Function(int index)? onItemLoaded;
 
   /// List of StoryItem objects to display in the story view.
   final List<StoryItem> items;
@@ -248,9 +248,7 @@ class _FlutterStoryPresenterState extends State<FlutterStoryPresenter>
   void _startStoryCountdown([bool skipVideo = false]) {
     if (_wasDisposed) return;
 
-    if (_currentIndex == 0) {
-      widget.onFirstItemLoaded?.call();
-    }
+    widget.onItemLoaded?.call(_currentIndex);
 
     if (!skipVideo) {
       _currentVideoPlayer?.addListener(videoListener);
