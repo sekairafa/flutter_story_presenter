@@ -39,6 +39,7 @@ class VideoUtils {
     return CachedVideoPlayerPlusController.networkUrl(
       Uri.parse(url),
       videoPlayerOptions: videoPlayerOptions,
+      isStoryMode: true,
     );
   }
 
@@ -50,6 +51,7 @@ class VideoUtils {
     return CachedVideoPlayerPlusController.file(
       file,
       videoPlayerOptions: videoPlayerOptions,
+      isStoryMode: true,
     );
   }
 
@@ -61,6 +63,7 @@ class VideoUtils {
     return CachedVideoPlayerPlusController.asset(
       assetPath,
       videoPlayerOptions: videoPlayerOptions,
+      isStoryMode: true,
     );
   }
 }
