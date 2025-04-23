@@ -14,7 +14,7 @@ dependencies:
   cached_network_image: ^3.3.1
   flutter_cache_manager: ^3.3.1
   flutter_hooks: ^0.20.5
-  flutter_inappwebview: ^6.1.5
+  zikzak_inappwebview: ^1.4.1
   just_audio: ^0.9.37
   cached_video_player_plus:
     git:

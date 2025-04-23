@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:zikzak_inappwebview/zikzak_inappwebview.dart';
 import '../models/story_item.dart';
 
 typedef OnWebViewLoaded = void Function(InAppWebViewController, bool);

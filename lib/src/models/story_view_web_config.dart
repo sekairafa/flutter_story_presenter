@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import '../story_presenter/web_story_view.dart';
 
 class StoryViewWebConfig {
