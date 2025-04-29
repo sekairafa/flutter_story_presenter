@@ -19,7 +19,7 @@ dependencies:
   cached_video_player_plus:
     git:
       url: https://github.com/sekairafa/cached_video_player_plus.git
-      ref: a1e9c982deb231e74c144e3442fba8363bbf64b4
+      ref: 7a9715b92114a1be669a2bf572de3d82c08db5e1
     # path: ../cached_video_player_plus
 
 dev_dependencies:
