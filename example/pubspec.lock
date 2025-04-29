@@ -53,8 +53,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: a1e9c982deb231e74c144e3442fba8363bbf64b4
-      resolved-ref: a1e9c982deb231e74c144e3442fba8363bbf64b4
+      ref: "7a9715b92114a1be669a2bf572de3d82c08db5e1"
+      resolved-ref: "7a9715b92114a1be669a2bf572de3d82c08db5e1"
       url: "https://github.com/sekairafa/cached_video_player_plus.git"
     source: git
     version: "3.0.3"

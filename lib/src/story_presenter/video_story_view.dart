@@ -20,12 +20,8 @@ class VideoStoryView extends StatefulWidget {
   final bool? looping;
 
   /// Creates a [VideoStoryView] widget.
-  const VideoStoryView({
-    required this.storyItem,
-    this.onVideoLoad,
-    this.looping,
-    super.key,
-  });
+  const VideoStoryView(
+      {required this.storyItem, this.onVideoLoad, this.looping, super.key});
 
   @override
   State<VideoStoryView> createState() => _VideoStoryViewState();
@@ -47,12 +43,12 @@ class _VideoStoryViewState extends State<VideoStoryView> {
       final storyItem = widget.storyItem;
       if (storyItem.storyItemSource.isNetwork) {
         // Initialize video controller for network source.
-        videoPlayerController = await VideoUtils.instance
-            .videoControllerFromUrl(
-              url: storyItem.url!,
-              //cacheFile: storyItem.videoConfig?.cacheVideo,
-              videoPlayerOptions: storyItem.videoConfig?.videoPlayerOptions,
-            );
+        videoPlayerController =
+            await VideoUtils.instance.videoControllerFromUrl(
+          url: storyItem.url!,
+          //cacheFile: storyItem.videoConfig?.cacheVideo,
+          videoPlayerOptions: storyItem.videoConfig?.videoPlayerOptions,
+        );
       } else if (storyItem.storyItemSource.isFile) {
         // Initialize video controller for file source.
         videoPlayerController = VideoUtils.instance.videoControllerFromFile(
@@ -105,24 +101,31 @@ class _VideoStoryViewState extends State<VideoStoryView> {
         if (videoPlayerController != null) ...{
           if (widget.storyItem.videoConfig?.useVideoAspectRatio ?? false) ...{
             // Display the video with aspect ratio if specified.
-            CachedVideoPlayerPlus(videoPlayerController!),
+            AspectRatio(
+              aspectRatio: (videoPlayerController!.value.rotationCorrection ==
+                          90 ||
+                      videoPlayerController!.value.rotationCorrection == 270)
+                  ? 1 / videoPlayerController!.value.aspectRatio
+                  : videoPlayerController!.value.aspectRatio,
+              child: CachedVideoPlayerPlus(
+                videoPlayerController!,
+              ),
+            )
           } else ...{
             // Display the video fitted to the screen.
             FittedBox(
               fit: widget.storyItem.videoConfig?.fit ?? BoxFit.cover,
               alignment: Alignment.center,
               child: SizedBox(
-                width:
-                    widget.storyItem.videoConfig?.width ??
+                width: widget.storyItem.videoConfig?.width ??
                     videoPlayerController!.value.size.width,
-                height:
-                    widget.storyItem.videoConfig?.height ??
+                height: widget.storyItem.videoConfig?.height ??
                     videoPlayerController!.value.size.height,
                 child: CachedVideoPlayerPlus(videoPlayerController!),
               ),
-            ),
+            )
           },
-        },
+        }
       ],
     );
   }
