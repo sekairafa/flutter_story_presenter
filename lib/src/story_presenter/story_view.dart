@@ -596,7 +596,7 @@ class _FlutterStoryPresenterState extends State<FlutterStoryPresenter>
             width: size.width * .2,
             height: size.height,
             child: GestureDetector(
-              onTap: _playPrevious,
+              onTap: _onTapLeft,
             ),
           ),
         ),
@@ -606,7 +606,7 @@ class _FlutterStoryPresenterState extends State<FlutterStoryPresenter>
             width: size.width * .2,
             height: size.height,
             child: GestureDetector(
-              onTap: _playNext,
+              onTap: _onTapRight,
             ),
           ),
         ),
@@ -651,5 +651,21 @@ class _FlutterStoryPresenterState extends State<FlutterStoryPresenter>
         },
       ],
     );
+  }
+
+  void _onTapLeft() {
+    if (Directionality.of(context) == TextDirection.ltr) {
+      _playPrevious();
+    } else {
+      _playNext();
+    }
+  }
+
+  void _onTapRight() {
+    if (Directionality.of(context) == TextDirection.ltr) {
+      _playNext();
+    } else {
+      _playPrevious();
+    }
   }
 }
